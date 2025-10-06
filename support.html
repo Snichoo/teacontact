@@ -1,59 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f5f5f5;
-            color: #333;
-        }
-        
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-        
-        .email {
-            font-size: 1.1rem;
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .email:hover {
-            color: #0052a3;
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact & Data Deletion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root{
+      --bg: #f5f5f5;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #555;
+      --brand: #0066cc;
+      --brand-hover:#0052a3;
+      --accent:#eaf4ff;
+      --danger:#cc0000;
+    }
+
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--bg);
+      color: var(--text);
+      padding: 1.25rem;
+    }
+
+    .container{
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      padding: 2rem;
+    }
+
+    header{
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    h1{
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .notice{
+      background: var(--accent);
+      border: 1px solid #d8eaff;
+      color: #113b6b;
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 680px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .card{
+      border: 1px solid #e9e9e9;
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .card h2{
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ol{
+      list-style: none;
+      counter-reset: step;
+    }
+
+    li{
+      counter-increment: step;
+      margin: 0.5rem 0;
+      padding-left: 2.25rem;
+      position: relative;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    li::before{
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      width: 1.65rem;
+      height: 1.65rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .btn{
+      display: inline-block;
+      margin-top: 0.9rem;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: transform .02s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover{ background: var(--brand-hover); }
+
+    .btn-outline{
+      color: var(--brand);
+      border-color: var(--brand);
+      background: #fff;
+    }
+    .btn-outline:hover{
+      background: #f6faff;
+      border-color: var(--brand-hover);
+      color: var(--brand-hover);
+    }
+
+    .email{
+      font-size: 1.05rem;
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .email:hover{ color: var(--brand-hover); text-decoration: underline; }
+
+    .foot{
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .danger{
+      color: var(--danger);
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Contact</h1>
-        <a href="mailto:teacontact4@gmail.com" class="email">teacontact4@gmail.com</a>
-    </div>
+  <main class="container" role="main">
+    <header>
+      <h1>Contact & Data Deletion</h1>
+      <p class="notice" role="status">
+        <strong>We will delete all of your data upon request.</strong> You can either delete your account directly in the app (which <span class="danger">permanently deletes all associated data</span>), or email us asking for deletion.
+      </p>
+    </header>
+
+    <section class="grid" aria-label="How to delete your data">
+      <!-- Option 1: Delete from the app -->
+      <article class="card">
+        <h2>Option 1 — Delete your account in the app (instant)</h2>
+        <ol>
+          <li>Open the app and go to <strong>Profile → Settings</strong>.</li>
+          <li>Tap <strong>Delete Account</strong>.</li>
+          <li>Confirm. This permanently deletes your account and <strong>all data</strong>.</li>
+        </ol>
+        <p class="foot">Once confirmed, your data is removed. This action can’t be undone.</p>
+      </article>
+
+      <!-- Option 2: Email request -->
+      <article class="card">
+        <h2>Option 2 — Email us to request deletion</h2>
+        <ol>
+          <li>Email us from the address linked to your account.</li>
+          <li>Say you want your data deleted (a simple request is enough).</li>
+          <li>We’ll process the request and confirm once the deletion is complete.</li>
+        </ol>
+
+        <a
+          class="btn btn-primary"
+          href="mailto:teacontact4@gmail.com?subject=Delete%20my%20data&body=Hello%2C%0A%0APlease%20delete%20my%20account%20and%20all%20associated%20data.%0A%0ARegistered%20email%3A%20%3Cyour%20email%3E%0A(Optional)%20Reason%3A%20%0A%0AThank%20you."
+          aria-label="Email us to request data deletion"
+        >Email deletion request</a>
+
+        <div style="margin-top:.5rem">
+          <a href="mailto:teacontact4@gmail.com" class="email">teacontact4@gmail.com</a>
+        </div>
+
+        <a class="btn btn-outline" href="mailto:teacontact4@gmail.com">General contact</a>
+      </article>
+    </section>
+
+    <p class="foot">
+      Questions about deletion or privacy? Contact us at
+      <a href="mailto:teacontact4@gmail.com" class="email">teacontact4@gmail.com</a>.
+    </p>
+  </main>
 </body>
 </html>
